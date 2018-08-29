@@ -1,0 +1,44 @@
+.headerContainer {
+  background-color: #00063A;
+  height: 60px;
+}
+
+#profilePicture {
+  border-radius: 50%;
+  width: 50px;
+  margin: 5px;
+  display: inline-block;
+  float: left;
+}
+
+#navbar {
+  margin: 0px;
+  padding: 0px;
+  font-size: 130%;
+}
+
+#navbar ul {
+  color: #4DC9FF;
+  margin: 0px;
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar ul li {
+  float: left;
+}
+
+#navbar ul li a {
+  display: block;
+  text-align: center;
+  padding: 18px 14px;
+  text-decoration: none;
+  color: white;
+}
+
+#navbar ul li a:hover {
+  color: #4DC9FF;
+}
+

@@ -1,4 +1,29 @@
+body {
+  font-size: 14px;
+  font-family: Calibri, Arial;
+	border: 0px;
+  margin: 0px;
+}
+
+.contentContainer {
+  max-width: 950px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
 h2 {
+	margin: 0px;
+	clear: both;
   background: green;
 	color: red;
+	border: 1px solid black;
 }
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
