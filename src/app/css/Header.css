@@ -42,3 +42,7 @@
   color: #4DC9FF;
 }
 
+#navbar ul li a.currentPage {
+  color: yellow;
+  font-weight: bold;
+}

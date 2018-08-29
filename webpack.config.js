@@ -5,12 +5,9 @@ var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
 
 var config = {
-	mode: 'production',
+	mode: 'development',
   entry: [
     SRC_DIR + "/app/index.js"
-    // SRC_DIR + "/index.html",
-    // SRC_DIR + "/prod-server.js",
-    // "./package.json"
   ],
   output: {
   	path: DIST_DIR,
@@ -32,18 +29,6 @@ var config = {
         include: SRC_DIR,
         loaders: ['style-loader', 'css-loader']
       },
-      // {
-      //   test: /\.css$/,
-      //   include: SRC_DIR,
-      //   use: [{
-      //     loader: 'file-loader',
-      //     options: {
-      //       outputPath: 'css/',
-      //       name: '[name].[ext]',
-      //       context: ''
-      //     }
-      //   }]
-      // },
       {
         test: /\.(png|jpg|gif)$/,
         include: SRC_DIR,
@@ -57,28 +42,13 @@ var config = {
           }
         }]
       },
-      // {
-      //   test: /prod\-server\.js?/,
-      //   include: SRC_DIR,
-      //   use: [{
-      //     loader: 'file-loader',
-      //     options: {
-      //       outputPath: "/",
-      //       name: '[name].[ext]',
-      //       context: ''
-      //     }
-      //   }]
-      // },
-      // {
-      //   test: /\.html/,
-      //   loader: 'file-loader?name=[name].[ext]', 
-      // }  	
     ]
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8080
+    port: 8080,
+    historyApiFallback: true
   },
   plugins: [
   	new CopyWebpackPlugin([

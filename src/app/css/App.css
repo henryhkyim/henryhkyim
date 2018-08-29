@@ -9,21 +9,18 @@ body {
   max-width: 950px;
   margin: 0 auto;
   overflow: auto;
+	clear: both;
+}
+
+.mainContainer {
+  max-width: 950px;
+  margin: 10px auto;
+  overflow: auto;
+  text-align: center;
+	clear: both;
 }
 
 h2 {
-	margin: 0px;
-	clear: both;
-  background: green;
-	color: red;
-	border: 1px solid black;
+  font-size: 180%;
+	color: #00063A;
 }
-
-.floatLeft {
-	float: left;
-}
-
-.floatRight {
-	float: right;
-}
-
