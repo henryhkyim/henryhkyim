@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Header } from './Header'
-import { AboutMe } from './AboutMe'
+import { Home } from './Home'
 import { FlashGame } from './FlashGame'
 import { StockQuote } from './StockQuote'
 import { Portfolio } from './Portfolio'
@@ -16,14 +16,19 @@ export class App extends React.Component {
 						<div>
 							<Header/>
 						</div>
-						<div className="contentContainer">
+						<div className="mainContainer">
 							<Switch>
-							  <Redirect exact from="/" to="/aboutMe"/>
-								<Route path="/aboutMe" exact component={AboutMe}/>
+							  <Redirect exact from="/" to="/home"/>
+								<Route path="/home" exact component={Home}/>
 								<Route path="/flashGame" exact component={FlashGame}/>
 								<Route path="/stockQuote" exact component={StockQuote}/>
 								<Route path="/portfolio" exact component={Portfolio}/>
 							</Switch>
+						</div>
+						<div className="mainContainer">
+							<footer>
+								<p>Copyright &copy 2018 by Henry Yim</p>
+							</footer>
 						</div>
 					</div>
 				</BrowserRouter>

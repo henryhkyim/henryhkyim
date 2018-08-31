@@ -8,16 +8,17 @@
   width: 50px;
   margin: 5px;
   display: inline-block;
-  float: left;
 }
 
 #navbar {
   margin: 0px;
   padding: 0px;
   font-size: 130%;
+  /*border: 1px solid green;*/
 }
 
 #navbar ul {
+  display: inline-block;
   color: #4DC9FF;
   margin: 0px;
   list-style-type: none;
@@ -31,7 +32,7 @@
 }
 
 #navbar ul li a {
-  display: block;
+  display: inline-block;
   text-align: center;
   padding: 18px 14px;
   text-decoration: none;

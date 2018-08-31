@@ -1,26 +1,29 @@
 body {
-  font-size: 14px;
+  font-size: 16px;
   font-family: Calibri, Arial;
 	border: 0px;
   margin: 0px;
 }
 
-.contentContainer {
-  max-width: 950px;
-  margin: 0 auto;
-  overflow: auto;
-	clear: both;
-}
-
 .mainContainer {
   max-width: 950px;
-  margin: 10px auto;
+  margin: 0px auto;
   overflow: auto;
   text-align: center;
 	clear: both;
 }
 
+h1 {
+  font-size: 230%;
+  color: #00063A;
+}
+
 h2 {
   font-size: 180%;
 	color: #00063A;
+}
+
+footer {
+  font-size: 80%;
+  color: #00063A;
 }
