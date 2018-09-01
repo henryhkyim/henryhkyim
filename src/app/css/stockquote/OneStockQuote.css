@@ -1,0 +1,36 @@
+.quoteBox {
+	height: 141px;
+	width: 141px;
+	float: left;
+	border: 1px solid #CCCCCC;
+	padding: 10px;
+}
+
+.quoteBox h3 {
+	margin: 0px;
+}
+
+.quoteBoxPrice h1 {
+	float: left;
+}
+
+.quoteBoxPrice p {
+	float: right;
+	margin-top: 35px;
+}
+
+.clearFloat {
+	clear: both;
+}
+
+.quoteBoxGreen {
+	color: green;
+}
+
+.quoteBoxRed {
+	color: red;
+}
+
+.quoteBoxBlack {
+	color: black;
+}

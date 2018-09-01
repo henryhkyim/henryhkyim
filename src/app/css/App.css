@@ -6,9 +6,9 @@ body {
 }
 
 .mainContainer {
-  max-width: 950px;
+  max-width: 850px;
   margin: 0px auto;
-  overflow: auto;
+  overflow: visible;
   text-align: center;
 	clear: both;
 }
@@ -26,4 +26,8 @@ h2 {
 footer {
   font-size: 80%;
   color: #00063A;
+}
+
+.alignCenter {
+  padding: 0px auto;
 }
