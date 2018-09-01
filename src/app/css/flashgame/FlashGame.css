@@ -1,0 +1,37 @@
+.questionContainer {
+	clear: both;
+  text-align: left;
+}
+
+.resultContainer {
+	clear: both;
+  text-align: left;
+}
+
+.questionContainer ul li {
+	clear: both;
+}
+
+.questionContainer ul {
+  list-style-type: none;
+}
+
+.withBorder {
+  border: 1px solid black;
+}
+
+.floatLeft {
+	display: inline;
+	float: left;
+}
+
+.floatRight {
+	display: inline;
+	float: right;
+	color: red;
+}
+
+.answerButton {
+	padding: 8px;
+	margin: 8px;
+}

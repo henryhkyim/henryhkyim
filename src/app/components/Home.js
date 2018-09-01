@@ -14,9 +14,9 @@ export class Home extends React.Component {
 								<h1>Henry Yim</h1>
 								<h2>Software Developer</h2>
 								<br/>
-			          <p><a href="mailto:yimhingkwong@yahoo.com.hk">yimhingkwong@yahoo.com.hk</a> <b>Email</b></p>
-			          <p><a href="https://github.com/henryhkyim">https://github.com/henryhkyim</a> <b>GitHub</b></p>
-			    		  <p><a href="https://www.linkedin.com/in/henryyim">https://www.linkedin.com/in/henryyim</a> <b>LindedIn</b></p>
+			          <p><a href="mailto:yimhingkwong@yahoo.com.hk">yimhingkwong@yahoo.com.hk</a>   <b>Email</b></p>
+			          <p><a href="https://github.com/henryhkyim">https://github.com/henryhkyim</a>   <b>GitHub</b></p>
+			    		  <p><a href="https://www.linkedin.com/in/henryyim">https://www.linkedin.com/in/henryyim</a>   <b>LinkedIn</b></p>
 			    		</span>
 		    		</div>
 					</div>
