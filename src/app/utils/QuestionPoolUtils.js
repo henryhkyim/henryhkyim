@@ -1,10 +1,8 @@
 import { randomNumber } from "./NumberUtils"
 
-export class QuestionPoolUtil {
+class QuestionPool {
 	constructor() {
-		this.questionPool = [
-			// book 1
-			/*
+		this.book1 = [
 			{question: "accelerando, accel.", answer: "gradually getting faster"},
 			{question: "adagio", answer: "slow"},
 			{question: "allegretto", answer: "fairly fast (slower than allegro)"},
@@ -31,9 +29,9 @@ export class QuestionPoolUtil {
 			{question: "legato", answer: "smoothly"},
 			{question: "mezzo", answer: "half"},
 			{question: "poco", answer: "a little"},
-			{question: "staccato (stacc.)", answer: "detached"},
-			*/
-
+			{question: "staccato (stacc.)", answer: "detached"}
+		]
+		this.book3 = [
 			// book 3 - Performance Directions
 			{question: "ad libitum (ad lib.)", answer: "at choice, freely"},
 			{question: "agitato", answer: "agitated"},
@@ -135,8 +133,13 @@ export class QuestionPoolUtil {
 			{question: "subito", answer: "suddenly"},
 			{question: "tanto", answer: "so much"},
 			{question: "troppo", answer: "too much"},
-			{question: "volta", answer: "time (prima volta: first time; seconda volta: second time)"},
+			{question: "volta", answer: "time (prima volta: first time; seconda volta: second time)"}
 		]
+	}
+}
+export class QuestionPoolUtil {
+	constructor() {
+		this.questionPool = new QuestionPool()
 		this.answerOptions = ["A", "B", "C", "D", "E"]
 		this.usedQuestionList = []
 		this.selectedAnswerList = []
@@ -144,12 +147,23 @@ export class QuestionPoolUtil {
 		this.currentAnswerIdxList = []
 	} 
 
-	getQuestionByIdx(idx) {
-		return this.questionPool[idx].question
+	getQuestionPool(book) {
+		let questionPool = null;
+		console.log('book = ' + book)
+		if (book == 1) {
+			questionPool = this.questionPool.book1
+		} else if (book == 3) {
+			questionPool = this.questionPool.book3
+		}
+		return questionPool
 	}
 
-	getAnswerByIdx(idx) {
-		return this.questionPool[idx].answer
+	getQuestionByIdx(book, idx) {
+		return this.getQuestionPool(book)[idx].question
+	}
+
+	getAnswerByIdx(book, idx) {
+		return this.getQuestionPool(book)[idx].answer
 	}
 
 	getAnswerOption(idx) {
@@ -184,24 +198,28 @@ export class QuestionPoolUtil {
 		this.selectedAnswerList.push(idx)
 	}
 
-	pullQuestion() {
+	pullQuestion(book) {
+		console.log('pulling question')
+		let questionPool = this.getQuestionPool(book)
 		this.currentQuestionIdx = null
 		this.currentAnswerIdxList = []
-		if (this.usedQuestionList.length == this.questionPool.length) {
+		if (this.usedQuestionList.length == questionPool.length) {
 			return -1;
 		}
 		while (this.currentQuestionIdx == null || this.usedQuestionList.indexOf(this.currentQuestionIdx) != -1) {
-			this.currentQuestionIdx = randomNumber(0, this.questionPool.length)
+			this.currentQuestionIdx = randomNumber(0, questionPool.length)
 		}
 		this.usedQuestionList.push(this.currentQuestionIdx)
 		this.currentAnswerIdxList.push(this.currentQuestionIdx)
 		return this.currentQuestionIdx
 	}
 
-	pickAnswer() {
+	pickAnswer(book) {
+		console.log('picking answer')
+		let questionPool = this.getQuestionPool(book)
 		let idx = null
 		while (idx == null || this.currentAnswerIdxList.indexOf(idx) != -1) {
-			idx = randomNumber(0, this.questionPool.length)
+			idx = randomNumber(0, questionPool.length)
 		}
 		return idx
 	}
@@ -217,9 +235,9 @@ export class QuestionPoolUtil {
 		}
 	} 
 
-	pullAnswers(num) {
+	pullAnswers(book, num = 4) {
 		while (this.currentAnswerIdxList.length < num) {
-			this.currentAnswerIdxList.push(this.pickAnswer())
+			this.currentAnswerIdxList.push(this.pickAnswer(book))
 		}
 		this.shuffleAnswer()
 		return this.currentAnswerIdxList

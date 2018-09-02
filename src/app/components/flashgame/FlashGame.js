@@ -59,11 +59,11 @@ export class FlashGame extends React.Component {
 		} else {
 			if (this.state.total == 10) {
 				contentJsx = (
-					<FlashGameResult questionPool={this.questionPool}>
+					<FlashGameResult book={this.state.level} questionPool={this.questionPool}>
 						<NewGame levelBtn={this.levelBtn} />
 					</FlashGameResult>
 				)
-				headingJsx = <div>Level: {this.state.level}  You got {this.state.correct} out of {this.state.total}!</div>
+				headingJsx = <div>Book: {this.state.level}  You got {this.state.correct} out of {this.state.total}!</div>
 			} else {
 				contentJsx = (<FlashGameQuestion level={this.state.level}
 				                                 questionNum={this.state.questionNum} 
@@ -71,7 +71,7 @@ export class FlashGame extends React.Component {
 				                                 handleAnswer={this.handleAnswer} />
 				             )
 				headingJsx = (<div>
-										    Level: {this.state.level} Correct: {this.state.correct} Incorrect: {this.state.incorrect} Total: {this.state.total}
+										    Book: {this.state.level} Correct: {this.state.correct} Incorrect: {this.state.incorrect} Total: {this.state.total}
 										  </div>
 										 )
 			}

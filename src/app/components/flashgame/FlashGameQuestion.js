@@ -12,7 +12,7 @@ export class FlashGameQuestion extends React.Component {
 	renderAnswer(ansIdx, idx) {
 		return (<li key={idx}> 
 							<button type="button" className="answerButton" onClick={() => this.props.handleAnswer(idx)}>
-			          {this.props.questionPool.getAnswerOption(idx)}. {this.props.questionPool.getAnswerByIdx(ansIdx)} 
+			          {this.props.questionPool.getAnswerOption(idx)}. {this.props.questionPool.getAnswerByIdx(this.props.level, ansIdx)} 
 			        </button>
 		        </li>)
 	}
@@ -21,9 +21,9 @@ export class FlashGameQuestion extends React.Component {
 		return (
 				<div className="questionContainer">
 					<h3>Question {this.props.questionNum}:</h3>
-					<p>What does "{this.props.questionPool.getQuestionByIdx(this.props.questionPool.pullQuestion())}" mean?</p>
+					<p>What does "{this.props.questionPool.getQuestionByIdx(this.props.level, this.props.questionPool.pullQuestion(this.props.level))}" mean?</p>
 					<ul>
-						{this.props.questionPool.pullAnswers(this.props.level+1).map(this.renderAnswer)}
+						{this.props.questionPool.pullAnswers(this.props.level).map(this.renderAnswer)}
 					</ul>
 				</div>
 			)
