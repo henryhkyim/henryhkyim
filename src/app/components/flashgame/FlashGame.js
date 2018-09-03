@@ -71,14 +71,14 @@ export class FlashGame extends React.Component {
 				                                 handleAnswer={this.handleAnswer} />
 				             )
 				headingJsx = (<div>
-										    Book: {this.state.level} Correct: {this.state.correct} Incorrect: {this.state.incorrect} Total: {this.state.total}
+										    Question from Book {this.state.level}
 										  </div>
 										 )
 			}
 		}
 		return (
 			<div>
-				<h2 className="floatLeft">Flash Game</h2>
+				<h2 className="floatLeft">Music Theory</h2>
 				<h2 className="floatRight">{headingJsx}</h2>
 				{contentJsx}
 			</div>

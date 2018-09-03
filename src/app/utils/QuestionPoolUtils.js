@@ -31,6 +31,7 @@ class QuestionPool {
 			{question: "poco", answer: "a little"},
 			{question: "staccato (stacc.)", answer: "detached"}
 		]
+		this.book2 = []
 		this.book3 = [
 			// book 3 - Performance Directions
 			{question: "ad libitum (ad lib.)", answer: "at choice, freely"},
@@ -135,6 +136,112 @@ class QuestionPool {
 			{question: "troppo", answer: "too much"},
 			{question: "volta", answer: "time (prima volta: first time; seconda volta: second time)"}
 		]
+		this.book4 = []
+		this.book5 = [
+			// book 5 Italian terms
+			{question: "a", answer: "at, to, by, for, in the style of"},
+			{question: "accelerando, accel.", answer: "gradually getting faster"},
+			{question: "ad libitum (ad lib.)", answer: "at choice, freely"},
+			{question: "adagietto", answer: "rather slow (faster than adagio)"},
+			{question: "adagio", answer: "slow"},
+			{question: "affettuoso", answer: "tenderly"},
+			{question: "affrettando", answer: "hurrying"},
+			{question: "agitato", answer: "agitated"},
+			{question: "al, alla", answer: "to the, in the manner of (alla breve: with a minim beat, C (2/2); alla marcia: in the style of a march"},
+			{question: "allargando", answer: "broadening (getting slower and louder)"},
+			{question: "allegretto", answer: "fairly fast (slower than allegro)"},
+			{question: "allegro", answer: "fast (allegro assai: very fast)"},
+			{question: "amabile", answer: "amiable, preasant"},
+			{question: "amore", answer: "love (amoroso: loving)"},
+			{question: "andante", answer: "at a medium (walking) speed"},
+			{question: "andantino", answer: "slightly faster than andante"},
+			{question: "anima", answer: "soul, spirit (con anima: with feeling)"},
+			{question: "animando", answer: "becoming lively"},
+			{question: "animato", answer: "animated, lively"},
+			{question: "appassionato", answer: "with passion"},
+			{question: "assai", answer: "very"},
+			{question: "attacca", answer: "go straight on"},
+			{question: "ben", answer: "well"},
+			{question: "brio", answer: "vigour (con brio: with vigour)"},
+			{question: "calando", answer: "getting softer, dying away"},
+			{question: "cantabile", answer: "in a singing style"},
+			{question: "cantando", answer: "singing"},
+			{question: "come", answer: "as, similar to (come prima: as before; come sopra: as above)"},
+			{question: "comodo", answer: "convenient, comfotable (tempo comodo: at a comfotable (normal) speed)"},
+			{question: "con, col", answer: "with"},
+			{question: "crescendo, cresc.", answer: "gradually getting louder"},
+			{question: "da capo, D.C.", answer: "repeat from the beginning"},
+			{question: "dal segno, D.S", answer: "repeat from the sign S"},
+			{question: "deciso", answer: "with determination"},
+			{question: "decrescendo, decresc.", answer: "gradually getting softer"},
+			{question: "delicato", answer: "delicate"},
+			{question: "diminuendo, dim.", answer: "gradually getting softer"},
+			{question: "dolce", answer: "sweet, soft"},
+			{question: "dolente", answer: "sad, mournful"},
+			{question: "dolore", answer: "grief (doloroso: sorrowful)"},
+			{question: "doppio movimento", answer: "twice as fast"},
+			{question: "e, ed", answer: "and"},
+			{question: "energico", answer: "energetic"},
+			{question: "espressivo, express., espr.", answer: "expressive (espressione: exression; con espressione: with expression)"},
+			{question: "estinto", answer: "as soft as possible, lifeless"},
+			{question: "f, forte", answer: "loud"},
+			{question: "facile", answer: "easy"},
+			{question: "ff, fortissimo", answer: "very loud"},
+			{question: "fine", answer: "the end"},
+			{question: "forza", answer: "force"},
+			{question: "fp, fortepiano", answer: "loud, then immediately soft"},
+			{question: "fuoco", answer: "fire"},
+			{question: "giocoso", answer: "playful, merry"},
+			{question: "giusto", answer: "proper, exact (tempo giusto: in strict time)"},
+			{question: "grave", answer: "very slow, solemn"},
+			{question: "grazioso", answer: "graceful"},
+			{question: "incalzando", answer: "getting faster"},
+			{question: "l'istesso", answer: "the same (l'istesso tempo: at the same speed)"},
+			{question: "lacrimoso", answer: "sad"},
+			{question: "largamente", answer: "broadly"},
+			{question: "larghetto", answer: "rather slow (faster than largo)"},
+			{question: "largo", answer: "slow stately"},
+			{question: "legato", answer: "smoothly"},
+			{question: "leggiero", answer: "light, nimble"},
+			{question: "lento", answer: "slow"},
+			{question: "loco", answer: "at the normal pitch (used to cancel 8va)"},
+			// book 5 French terms
+			{question: "lunga", answer: "long (lunga pausa: long pause"},
+			{question: "lusingando", answer: "coaxing, in a sweet and persuasive style"},
+			{question: "ma", answer: "but"},
+			{question: "maestoso", answer: "majestic"},
+			{question: "marcato, marc.", answer: "emphatic, accented"},
+			{question: "marziale", answer: "in a military style"},
+			{question: "meno", answer: "less"},
+			{question: "mesto", answer: "sad"},
+			{question: "mezzo", answer: "half"},
+			{question: "mf, mezzo forte", answer: "moderately loud"},
+			{question: "misura", answer: "measure (alla misura: in strict time; senza misura: in free time"},
+			{question: "moderato", answer: "moderately"},
+			{question: "molto", answer: "very, much"},
+			{question: "morendo", answer: "dying away"},
+			{question: "mosso, moto", answer: "movement (meno mosso: slower; con moto: with movement"},
+			{question: "mp, mezzo piano", answer: "moderately soft"},
+			{question: "niente", answer: "nothing (a niente: dying away)"},
+			{question: "nobilmente", answer: "nobly"},
+			{question: "non", answer: "not"},
+			{question: "ossia", answer: "or, alternatively"},
+			{question: "p, piano", answer: "soft"},
+			{question: "perdendosi", answer: "dying away"},
+			{question: "pesante", answer: "heavy"},
+			{question: "piacevole", answer: "pleasant"},
+			{question: "piangevole", answer: "plaintive, in the style of a lament"},
+			{question: "piu", answer: "more"},
+			{question: "pochettino, poch.", answer: "rather little"},
+			{question: "poco", answer: "a little"},
+			{question: "possible", answer: "possible (presto possible: as fast as possible)"},
+			{question: "pp, pianissimo", answer: "very soft"},
+			{question: "presto", answer: "fast (faster than allegro)"},
+			{question: "prima, primo", answer: "first"},
+			{question: "quasi", answer: "as if, resembling"},
+			{question: "rallentando, rall.", answer: "gradually getting slower"},
+			// book 5 German terms
+		]
 	}
 }
 export class QuestionPoolUtil {
@@ -154,6 +261,10 @@ export class QuestionPoolUtil {
 			questionPool = this.questionPool.book1
 		} else if (book == 3) {
 			questionPool = this.questionPool.book3
+		} else if (book == 4) {
+			questionPool = this.questionPool.book4
+		} else if (book == 5) {
+			questionPool = this.questionPool.book5
 		}
 		return questionPool
 	}
