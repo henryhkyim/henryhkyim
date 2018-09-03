@@ -1,12 +1,12 @@
 import React from 'react'
 import { QuestionPoolUtil } from '../../utils/QuestionPoolUtils'
-import { FlashGameQuestion } from './FlashGameQuestion'
-import { FlashGameResult } from './FlashGameResult'
-import { NewGame } from './NewGame'
+import { MusicTheoryQuestion } from './MusicTheoryQuestion'
+import { MusicTheoryResult } from './MusicTheoryResult'
+import { NewTest } from './NewTest'
 
-import "../../css/flashgame/FlashGame.css"
+import "../../css/musictheory/MusicTheory.css"
 
-export class FlashGame extends React.Component {
+export class MusicTheoryTest extends React.Component {
 	constructor() {
     super()
 		this.questionPool = new QuestionPoolUtil()
@@ -54,18 +54,18 @@ export class FlashGame extends React.Component {
 		let contentJsx = ""
 		let headingJsx = ""
 		if (this.state.level == -1) {
-			contentJsx = <NewGame levelBtn={this.levelBtn} />
+			contentJsx = <NewTest levelBtn={this.levelBtn} />
 			headingJsx = ""
 		} else {
 			if (this.state.total == 10) {
 				contentJsx = (
-					<FlashGameResult book={this.state.level} questionPool={this.questionPool}>
-						<NewGame levelBtn={this.levelBtn} />
-					</FlashGameResult>
+					<MusicTheoryResult book={this.state.level} questionPool={this.questionPool}>
+						<NewTest levelBtn={this.levelBtn} />
+					</MusicTheoryResult>
 				)
 				headingJsx = <div>Book: {this.state.level}  You got {this.state.correct} out of {this.state.total}!</div>
 			} else {
-				contentJsx = (<FlashGameQuestion level={this.state.level}
+				contentJsx = (<MusicTheoryQuestion level={this.state.level}
 				                                 questionNum={this.state.questionNum} 
 				                                 questionPool={this.questionPool} 
 				                                 handleAnswer={this.handleAnswer} />

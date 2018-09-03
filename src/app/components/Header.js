@@ -14,7 +14,7 @@ export class Header extends React.Component {
 					    <ul>
 					    	<li><img id="profilePicture" src="images/henryhkyim.jpg"></img></li>
 					      <li><NavLink to="/home" activeClassName="currentPage">Home</NavLink></li>
-					      <li><NavLink to="/flashGame" activeClassName="currentPage">Flash Game</NavLink></li>
+					      <li><NavLink to="/musicTheory" activeClassName="currentPage">Music Theory</NavLink></li>
 					      <li><NavLink to="/stockQuote" activeClassName="currentPage">Stock Quote</NavLink></li>
 					      <li><NavLink to="/portfolio" activeClassName="currentPage">Portfolio</NavLink></li>
 					    </ul>

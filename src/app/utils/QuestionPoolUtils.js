@@ -205,7 +205,6 @@ class QuestionPool {
 			{question: "leggiero", answer: "light, nimble"},
 			{question: "lento", answer: "slow"},
 			{question: "loco", answer: "at the normal pitch (used to cancel 8va)"},
-			// book 5 French terms
 			{question: "lunga", answer: "long (lunga pausa: long pause"},
 			{question: "lusingando", answer: "coaxing, in a sweet and persuasive style"},
 			{question: "ma", answer: "but"},
@@ -240,7 +239,94 @@ class QuestionPool {
 			{question: "prima, primo", answer: "first"},
 			{question: "quasi", answer: "as if, resembling"},
 			{question: "rallentando, rall.", answer: "gradually getting slower"},
+			{question: "rinforzando, rf, rfz", answer: "reinforcing"},
+			{question: "risoluto", answer: "bold, strong"},
+			{question: "ritardando, ritard., rit.", answer: "gradually getting slower"},
+			{question: "ritenuto, riten., rit.", answer: "held back"},
+			{question: "ritmico", answer: "rhythmically"},
+			{question: "rubato, tempo rubato", answer: "with some freedom of time"},
+			{question: "scherzando, scherzoso", answer: "playful, joking"},
+			{question: "seconda, secondo", answer: "second"},
+			{question: "segue", answer: "go straight on"},
+			{question: "semplice", answer: "simple, plain"},
+			{question: "sempre", answer: "always"},
+			{question: "senza", answer: "without"},
+			{question: "sforzando, sforzato, sf, sfz", answer: "forced, accented"},
+			{question: "simile, sim.", answer: "in the same way"},
+			{question: "smorzando, smorz.", answer: "dying away"},
+			{question: "sonoro", answer: "resonant, with rich tone"},
+			{question: "sopra", answer: "above"},
+			{question: "sostenuto", answer: "sustained"},
+			{question: "sotto", answer: "below (sotto voce: in an undertone)"},
+			{question: "staccato, stacc.", answer: "detached"},
+			{question: "stringendo", answer: "gradually getting faster"},
+			{question: "subito", answer: "suddenly"},
+			{question: "tanto", answer: "so much"},
+			{question: "tempo", answer: "speed, time (a tempo: in time)"},
+			{question: "teneramente, tenerezza", answer: "tenderly, tenderness"},
+			{question: "tenuto", answer: "held"},
+			{question: "tosto", answer: "swift, rapid"},
+			{question: "tranquillo", answer: "calm"},
+			{question: "triste, tristamente", answer: "sad, sorrowful"},
+			{question: "troppo", answer: "too much"},
+			{question: "veloce", answer: "swift"},
+			{question: "vivace, vivo", answer: "lively, fast"},
+			{question: "voce", answer: "voice"},
+			{question: "volante", answer: "flying, fast"},
+			{question: "volta", answer: "time (prima volta: 1st time; seconda volta: 2nd time)"},
+			// book 5 French terms
+			{question: "a", answer: "to, at"},
+			{question: "anime", answer: "animated, lively"},
+			{question: "assez", answer: "enough, sufficiently"},
+			{question: "avec", answer: "with"},
+			{question: "cedez", answer: "yield, slow down"},
+			{question: "douce", answer: "sweet"},
+			{question: "en dehors", answer: "prominent"},
+			{question: "at", answer: "and"},
+			{question: "leger, legere", answer: "light"},
+			{question: "legerement", answer: "light"},
+			{question: "lent", answer: "slow"},
+			{question: "mais", answer: "but"},
+			{question: "moins", answer: "less"},
+			{question: "modere", answer: "at a moderate speed"},
+			{question: "non", answer: "not"},
+			{question: "peu", answer: "little"},
+			{question: "plus", answer: "more"},
+			{question: "presser", answer: "hurry (en pressant: hurrying on)"},
+			{question: "ralentir", answer: "slow down"},
+			{question: "retenu", answer: "held back (en retenant: holding back, slowing a little"},
+			{question: "sans", answer: "without"},
+			{question: "tres", answer: "very"},
+			{question: "un / une", answer: "one"},
+			{question: "vif", answer: "lively"},
+			{question: "vite", answer: "fast"},
 			// book 5 German terms
+			{question: "aber", answer: "but"},
+			{question: "Ausdruck", answer: "expression"},
+			{question: "bewegt", answer: "with movement, agitated"},
+			{question: "breit", answer: "broad, expansive"},
+			{question: "ein", answer: "a, one"},
+			{question: "einfach", answer: "simple"},
+			{question: "etwas", answer: "somewhat, rather"},
+			{question: "frohlich", answer: "cheerful, joyful"},
+			{question: "immer", answer: "always"},
+			{question: "langsam", answer: "slow"},
+			{question: "lebhaft", answer: "lively"},
+			{question: "massig", answer: "at a moderate speed"},
+			{question: "mit", answer: "with"},
+			{question: "nicht", answer: "not"},
+			{question: "ohne", answer: "without"},
+			{question: "ruhig", answer: "peaceful"},
+			{question: "schnell", answer: "fast"},
+			{question: "sehr", answer: "very"},
+			{question: "suss", answer: "sweet"},
+			{question: "traurig", answer: "sad"},
+			{question: "und", answer: "and"},
+			{question: "voll", answer: "full"},
+			{question: "wenig", answer: "little"},
+			{question: "wieder", answer: "again"},
+			{question: "zart", answer: "tender, delicate"},
+			{question: "zu", answer: "to, too"},
 		]
 	}
 }
@@ -256,7 +342,6 @@ export class QuestionPoolUtil {
 
 	getQuestionPool(book) {
 		let questionPool = null;
-		console.log('book = ' + book)
 		if (book == 1) {
 			questionPool = this.questionPool.book1
 		} else if (book == 3) {
@@ -310,7 +395,6 @@ export class QuestionPoolUtil {
 	}
 
 	pullQuestion(book) {
-		console.log('pulling question')
 		let questionPool = this.getQuestionPool(book)
 		this.currentQuestionIdx = null
 		this.currentAnswerIdxList = []
@@ -326,7 +410,6 @@ export class QuestionPoolUtil {
 	}
 
 	pickAnswer(book) {
-		console.log('picking answer')
 		let questionPool = this.getQuestionPool(book)
 		let idx = null
 		while (idx == null || this.currentAnswerIdxList.indexOf(idx) != -1) {

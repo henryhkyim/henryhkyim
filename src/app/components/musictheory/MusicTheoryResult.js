@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { QuestionPoolUtil } from "../../utils/QuestionPoolUtils"
 
-import "../../css/flashgame/FlashGameResult.css"
+import "../../css/musictheory/MusicTheoryResult.css"
 
-export class FlashGameResult extends React.Component {
+export class MusicTheoryResult extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -38,7 +38,7 @@ export class FlashGameResult extends React.Component {
 
 }
 
-FlashGameResult.propTypes = {
+MusicTheoryResult.propTypes = {
 	questionPool: PropTypes.object,
 	book: PropTypes.number
 }
