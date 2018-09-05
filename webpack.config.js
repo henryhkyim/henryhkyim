@@ -42,6 +42,19 @@ var config = {
           }
         }]
       },
+      {
+        test: /\.(mp3|wav)$/,
+        include: SRC_DIR,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'audio/',
+            //name: '[path][name].[ext]',
+            name: '[name].[ext]',
+            context: ''
+          }
+        }]
+      },
     ]
   },
   devServer: {

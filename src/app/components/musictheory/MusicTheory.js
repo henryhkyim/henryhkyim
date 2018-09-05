@@ -1,5 +1,6 @@
 import React from 'react'
 import { QuestionPoolUtil } from '../../utils/QuestionPoolUtils'
+import { playAudioCorrect, playAudioIncorrect } from '../../utils/AudioUtil.js'
 import { MusicTheoryQuestion } from './MusicTheoryQuestion'
 import { MusicTheoryResult } from './MusicTheoryResult'
 import { NewTest } from './NewTest'
@@ -39,8 +40,10 @@ export class MusicTheoryTest extends React.Component {
 		this.questionPool.addSelectedAnswerList(this.questionPool.getCurrentAnswerIdxList()[idx])
 		if (this.questionPool.getCurrentAnswerIdxList()[idx] == this.questionPool.getCurrentQuestionIdx()) {
 			correct = correct + 1
+			playAudioCorrect()
 		} else {
 			incorrect = incorrect + 1
+			playAudioIncorrect()
 		}
 		this.setState({
 			correct: correct,
