@@ -147,7 +147,7 @@ class QuestionPool {
 			{question: "affettuoso", answer: "tenderly"},
 			{question: "affrettando", answer: "hurrying"},
 			{question: "agitato", answer: "agitated"},
-			{question: "al, alla", answer: "to the, in the manner of (alla breve: with a minim beat, C (2/2); alla marcia: in the style of a march"},
+			{question: "al, alla", answer: "to the, in the manner of (alla breve: with a minim beat, C (2/2); alla marcia: in the style of a march)"},
 			{question: "allargando", answer: "broadening (getting slower and louder)"},
 			{question: "allegretto", answer: "fairly fast (slower than allegro)"},
 			{question: "allegro", answer: "fast (allegro assai: very fast)"},
@@ -219,7 +219,7 @@ class QuestionPool {
 			{question: "moderato", answer: "moderately"},
 			{question: "molto", answer: "very, much"},
 			{question: "morendo", answer: "dying away"},
-			{question: "mosso, moto", answer: "movement (meno mosso: slower; con moto: with movement"},
+			{question: "mosso, moto", answer: "movement (meno mosso: slower; con moto: with movement)"},
 			{question: "mp, mezzo piano", answer: "moderately soft"},
 			{question: "niente", answer: "nothing (a niente: dying away)"},
 			{question: "nobilmente", answer: "nobly"},
@@ -355,6 +355,8 @@ export class QuestionPoolUtil {
 	}
 
 	getQuestionByIdx(book, idx) {
+		console.log('book = ' + book)
+		console.log('idx = ' + idx)
 		return this.getQuestionPool(book)[idx].question
 	}
 
@@ -395,7 +397,6 @@ export class QuestionPoolUtil {
 	}
 
 	pullQuestion(book) {
-		console.log("pullQuestion")
 		let questionPool = this.getQuestionPool(book)
 		this.currentQuestionIdx = null
 		this.currentAnswerIdxList = []

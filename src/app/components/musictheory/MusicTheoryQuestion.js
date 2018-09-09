@@ -23,6 +23,7 @@ export class MusicTheoryQuestion extends React.Component {
 	}
 
 	componentWillMount() {
+		console.log('componentWillMount')
 		this.loadQuestionAndAnswer()
 	}
 
@@ -105,6 +106,9 @@ export class MusicTheoryQuestion extends React.Component {
 					<div className="floatRight">
 						<h3>Score: {this.state.score}</h3>
 					</div>
+					<div className="floatClear">
+						<h3>this.props.book = {this.props.book}</h3>
+					</div>
 				</div>
 			)
 	}
@@ -113,6 +117,5 @@ export class MusicTheoryQuestion extends React.Component {
 MusicTheoryQuestion.propTypes = {
 	questionPool: PropTypes.object,
 	questionNum: PropTypes.number,
-	book: PropTypes.number,
-	handleAnswer: PropTypes.func
+	book: PropTypes.number
 }
