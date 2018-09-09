@@ -1,3 +1,7 @@
+.contentContainer {
+  overflow: visible;
+}
+
 .questionContainer {
 	clear: both;
   text-align: left;
@@ -16,7 +20,7 @@
   list-style-type: none;
 }
 
-.withBorder {
+.showBorder {
   border: 1px solid black;
 }
 

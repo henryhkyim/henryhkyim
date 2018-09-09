@@ -1,4 +1,14 @@
-.LevelButton {
+.BookButton {
 	padding: 8px;
 	margin: 8px;
+}
+
+.booksButton {
+	padding: 10px 0px;
+	margin: 0px;
+}
+
+.currentBook {
+	background: #00063A;
+	color: white;
 }

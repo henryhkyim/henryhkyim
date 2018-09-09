@@ -5,17 +5,17 @@ import "../../css/musictheory/NewTest.css"
 
 /* a stateless component */
 export const NewTest = (props) => {
-			// <button type="button" className="LevelButton" onClick={() => props.levelBtn(5)}>Book 5</button>
+			// <button type="button" className="bookButton" onClick={() => props.bookBtn(5)}>Book 5</button>
 	return (
-		<div className="questionContainer">
-			<p>Start a new test?</p>
-			<button type="button" className="LevelButton" onClick={() => props.levelBtn(1)}>Book 1</button>
-			<button type="button" className="LevelButton" onClick={() => props.levelBtn(3)}>Book 3</button>
-			<button type="button" className="LevelButton" onClick={() => props.levelBtn(5)}>Book 5</button>
+		<div className="booksButton">
+			<button type="button" className={props.book == 1 ? "BookButton currentBook" : "BookButton"} onClick={() => props.bookBtn(1)}>Book 1</button>
+			<button type="button" className={props.book == 3 ? "BookButton currentBook" : "BookButton"} onClick={() => props.bookBtn(3)}>Book 3</button>
+			<button type="button" className={props.book == 5 ? "BookButton currentBook" : "BookButton"} onClick={() => props.bookBtn(5)}>Book 5</button>
 		</div>
 	)
 } 
 
 NewTest.propTypes = {
-	levelBtn: PropTypes.func
+	bookBtn: PropTypes.func,
+	book: PropTypes.number
 }

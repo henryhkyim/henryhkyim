@@ -7,25 +7,26 @@ import { NewTest } from './NewTest'
 
 import "../../css/musictheory/MusicTheory.css"
 
-export class MusicTheoryTest extends React.Component {
+export class MusicTheory extends React.Component {
 	constructor() {
     super()
 		this.questionPool = new QuestionPoolUtil()
     this.state = {
-  		level: -1,
+  		book: 1,
     	correct: 0,
     	incorrect: 0,
-    	total: 0
+    	total: 0,
+			questionNum: 1
     }
-    this.levelBtn = this.levelBtn.bind(this)
+    this.bookBtn = this.bookBtn.bind(this)
     this.handleAnswer = this.handleAnswer.bind(this)
 	}
 
-	levelBtn(level) {
+	bookBtn(book) {
 		this.questionPool.clearUsedQuestionList()
 		this.questionPool.clearSelectedAnswerList()
 		this.setState({
-			level: level,
+			book: book,
     	correct: 0,
     	incorrect: 0,
     	total: 0,
@@ -55,35 +56,21 @@ export class MusicTheoryTest extends React.Component {
 
 	render() {
 		let contentJsx = ""
-		let headingJsx = ""
-		if (this.state.level == -1) {
-			contentJsx = <NewTest levelBtn={this.levelBtn} />
-			headingJsx = ""
-		} else {
-			if (this.state.total == 10) {
-				contentJsx = (
-					<MusicTheoryResult book={this.state.level} questionPool={this.questionPool}>
-						<NewTest levelBtn={this.levelBtn} />
-					</MusicTheoryResult>
-				)
-				headingJsx = <div>Book: {this.state.level}  You got {this.state.correct} out of {this.state.total}!</div>
-			} else {
-				contentJsx = (<MusicTheoryQuestion level={this.state.level}
-				                                 questionNum={this.state.questionNum} 
-				                                 questionPool={this.questionPool} 
-				                                 handleAnswer={this.handleAnswer} />
-				             )
-				headingJsx = (<div>
-										    Question from Book {this.state.level}
-										  </div>
-										 )
-			}
+		if (this.state.book > 0) {
+			contentJsx = (<div>
+											<MusicTheoryQuestion book={this.state.book}
+		                  	                   questionNum={this.state.questionNum} 
+		                    	                 questionPool={this.questionPool} 
+		                      	               handleAnswer={this.handleAnswer} />
+			              </div>)
 		}
 		return (
 			<div>
 				<h2 className="floatLeft">Music Theory</h2>
-				<h2 className="floatRight">{headingJsx}</h2>
-				{contentJsx}
+				<div className="floatRight"><NewTest book={this.state.book} bookBtn={this.bookBtn}/></div>
+				<div className="floatClear">
+					{contentJsx}
+				</div>
 			</div>
 		)
 	}

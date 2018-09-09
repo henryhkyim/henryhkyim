@@ -395,6 +395,7 @@ export class QuestionPoolUtil {
 	}
 
 	pullQuestion(book) {
+		console.log("pullQuestion")
 		let questionPool = this.getQuestionPool(book)
 		this.currentQuestionIdx = null
 		this.currentAnswerIdxList = []
