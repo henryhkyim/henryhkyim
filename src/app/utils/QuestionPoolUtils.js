@@ -215,7 +215,7 @@ class QuestionPool {
 			{question: "mesto", answer: "sad"},
 			{question: "mezzo", answer: "half"},
 			{question: "mf, mezzo forte", answer: "moderately loud"},
-			{question: "misura", answer: "measure (alla misura: in strict time; senza misura: in free time"},
+			{question: "misura", answer: "measure (alla misura: in strict time; senza misura: in free time)"},
 			{question: "moderato", answer: "moderately"},
 			{question: "molto", answer: "very, much"},
 			{question: "morendo", answer: "dying away"},
