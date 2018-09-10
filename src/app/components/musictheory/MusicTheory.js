@@ -30,23 +30,26 @@ export class MusicTheory extends React.Component {
 	}
 
 	loadQuestionAndAnswer() {
-		console.log('loadQuestionAndAnswer from book ' + this.state.book)
+		console.log('loadQuestionAndAnswer before setState book ' + this.state.book)
 		let qn = this.questionPool.pullQuestion(this.state.book)
 		this.setState({
 			currentQuestion: qn,
 			currentAnswer: this.questionPool.pullAnswers(this.state.book)
 		})
+		console.log('loadQuestionAndAnswer after setState book ' + this.state.book)
 	}
 
 	handleAnswer(idx) {
 		if (this.state.answerSelected >= 0) {
 			if (this.state.currentAnswer[idx] == this.state.currentQuestion) {
+				console.log('handleAnswer before setState')
 				this.setState({
 					questionNum: this.state.questionNum + 1,
 					answerSelected: -1,
 					currentQuestion: -1,
 					currentAnswer: []
 				})
+				console.log('handleAnswer after setState')
 				this.loadQuestionAndAnswer()
 			}
 		} else {
@@ -57,16 +60,19 @@ export class MusicTheory extends React.Component {
 			} else {
 				playAudioIncorrect()
 			}
+			console.log('handleAnswer before setState')
 			this.setState({
 				score: newScore,
 				answerSelected: idx
 			})
+			console.log('handleAnswer after setState')
 		}
 	}
 
 	handleBook(book) {
 		this.questionPool.clearUsedQuestionList()
 		this.questionPool.clearSelectedAnswerList()
+  	console.log('handleBook before setState')
 		this.setState({
   		book: book,
 			questionNum: 1,
@@ -76,6 +82,7 @@ export class MusicTheory extends React.Component {
 			currentAnswer: []
 		})
 		this.loadQuestionAndAnswer()
+  	console.log('handleBook after setState')
 	}
 
 	renderAnswer(ansIdx, idx) {

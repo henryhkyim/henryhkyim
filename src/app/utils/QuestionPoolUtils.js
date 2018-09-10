@@ -125,7 +125,7 @@ class QuestionPool {
 			{question: "mezzo", answer: "half"},
 			{question: "molto", answer: "very, much"},
 			{question: "non", answer: "not"},
-			{question: "piu", answer: "more"},
+			{question: "più", answer: "more"},
 			{question: "poco", answer: "a little"},
 			{question: "prima, primo", answer: "first"},
 			{question: "seconda, secondo", answer: "second"},
@@ -230,7 +230,7 @@ class QuestionPool {
 			{question: "pesante", answer: "heavy"},
 			{question: "piacevole", answer: "pleasant"},
 			{question: "piangevole", answer: "plaintive, in the style of a lament"},
-			{question: "piu", answer: "more"},
+			{question: "più", answer: "more"},
 			{question: "pochettino, poch.", answer: "rather little"},
 			{question: "poco", answer: "a little"},
 			{question: "possible", answer: "possible (presto possible: as fast as possible)"},
@@ -275,28 +275,28 @@ class QuestionPool {
 			{question: "volante", answer: "flying, fast"},
 			{question: "volta", answer: "time (prima volta: 1st time; seconda volta: 2nd time)"},
 			// book 5 French terms
-			{question: "a", answer: "to, at"},
-			{question: "anime", answer: "animated, lively"},
+			{question: "à", answer: "to, at"},
+			{question: "animé", answer: "animated, lively"},
 			{question: "assez", answer: "enough, sufficiently"},
 			{question: "avec", answer: "with"},
-			{question: "cedez", answer: "yield, slow down"},
+			{question: "cédez", answer: "yield, slow down"},
 			{question: "douce", answer: "sweet"},
 			{question: "en dehors", answer: "prominent"},
 			{question: "at", answer: "and"},
 			{question: "leger, legere", answer: "light"},
-			{question: "legerement", answer: "light"},
+			{question: "légèrement", answer: "light"},
 			{question: "lent", answer: "slow"},
 			{question: "mais", answer: "but"},
 			{question: "moins", answer: "less"},
-			{question: "modere", answer: "at a moderate speed"},
+			{question: "modéré", answer: "at a moderate speed"},
 			{question: "non", answer: "not"},
 			{question: "peu", answer: "little"},
 			{question: "plus", answer: "more"},
 			{question: "presser", answer: "hurry (en pressant: hurrying on)"},
 			{question: "ralentir", answer: "slow down"},
-			{question: "retenu", answer: "held back (en retenant: holding back, slowing a little"},
+			{question: "retenu", answer: "held back (en retenant: holding back, slowing a little)"},
 			{question: "sans", answer: "without"},
-			{question: "tres", answer: "very"},
+			{question: "très", answer: "very"},
 			{question: "un / une", answer: "one"},
 			{question: "vif", answer: "lively"},
 			{question: "vite", answer: "fast"},
@@ -308,18 +308,18 @@ class QuestionPool {
 			{question: "ein", answer: "a, one"},
 			{question: "einfach", answer: "simple"},
 			{question: "etwas", answer: "somewhat, rather"},
-			{question: "frohlich", answer: "cheerful, joyful"},
+			{question: "fröhlich", answer: "cheerful, joyful"},
 			{question: "immer", answer: "always"},
 			{question: "langsam", answer: "slow"},
 			{question: "lebhaft", answer: "lively"},
-			{question: "massig", answer: "at a moderate speed"},
+			{question: "mässig", answer: "at a moderate speed"},
 			{question: "mit", answer: "with"},
 			{question: "nicht", answer: "not"},
 			{question: "ohne", answer: "without"},
 			{question: "ruhig", answer: "peaceful"},
 			{question: "schnell", answer: "fast"},
 			{question: "sehr", answer: "very"},
-			{question: "suss", answer: "sweet"},
+			{question: "süss", answer: "sweet"},
 			{question: "traurig", answer: "sad"},
 			{question: "und", answer: "and"},
 			{question: "voll", answer: "full"},
@@ -355,8 +355,7 @@ export class QuestionPoolUtil {
 	}
 
 	getQuestionByIdx(book, idx) {
-		console.log('book = ' + book)
-		console.log('idx = ' + idx)
+		console.log('getQuestionByIdx, book = ' + book + '; idx = ' + idx)
 		return this.getQuestionPool(book)[idx].question
 	}
 
@@ -397,6 +396,7 @@ export class QuestionPoolUtil {
 	}
 
 	pullQuestion(book) {
+		console.log('pullQuestion book = ' + book)
 		let questionPool = this.getQuestionPool(book)
 		this.currentQuestionIdx = null
 		this.currentAnswerIdxList = []
