@@ -205,7 +205,7 @@ class QuestionPool {
 			{question: "leggiero", answer: "light, nimble"},
 			{question: "lento", answer: "slow"},
 			{question: "loco", answer: "at the normal pitch (used to cancel 8va)"},
-			{question: "lunga", answer: "long (lunga pausa: long pause"},
+			{question: "lunga", answer: "long (lunga pausa: long pause)"},
 			{question: "lusingando", answer: "coaxing, in a sweet and persuasive style"},
 			{question: "ma", answer: "but"},
 			{question: "maestoso", answer: "majestic"},
@@ -355,11 +355,18 @@ export class QuestionPoolUtil {
 	}
 
 	getQuestionByIdx(book, idx) {
-		console.log('getQuestionByIdx, book = ' + book + '; idx = ' + idx)
-		return this.getQuestionPool(book)[idx].question
+		let question = 'Question not available'
+		if (idx >= 0) {
+			question = this.getQuestionPool(book)[idx].question
+		}
+		return question
 	}
 
 	getAnswerByIdx(book, idx) {
+		let answer = 'Answer not available'
+		if (idx >= 0) {
+			answer = this.getQuestionPool(book)[idx].answer
+		}
 		return this.getQuestionPool(book)[idx].answer
 	}
 
@@ -396,7 +403,6 @@ export class QuestionPoolUtil {
 	}
 
 	pullQuestion(book) {
-		console.log('pullQuestion book = ' + book)
 		let questionPool = this.getQuestionPool(book)
 		this.currentQuestionIdx = null
 		this.currentAnswerIdxList = []
@@ -411,10 +417,20 @@ export class QuestionPoolUtil {
 		return this.currentQuestionIdx
 	}
 
+  answerAlreadyInList(book, idx) {
+  	let questionPool = this.getQuestionPool(book)
+  	for (let i = 0; i < this.currentAnswerIdxList.length; i++) {
+  		if (questionPool[idx].answer == questionPool[this.currentAnswerIdxList[i]].answer) {
+  			return true
+  		}
+  	}
+  	return false
+  }
+
 	pickAnswer(book) {
 		let questionPool = this.getQuestionPool(book)
 		let idx = null
-		while (idx == null || this.currentAnswerIdxList.indexOf(idx) != -1) {
+		while (idx == null || this.answerAlreadyInList(book, idx)) {
 			idx = randomNumber(0, questionPool.length)
 		}
 		return idx

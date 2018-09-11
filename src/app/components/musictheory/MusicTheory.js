@@ -11,11 +11,12 @@ export class MusicTheory extends React.Component {
     super(props)
 		this.questionPool = new QuestionPoolUtil()
     this.state = {
-  		book: 5,
+  		book: 1,
 			questionNum: 1,
 			score: 0,
 			answerSelected: -1,
 			currentQuestion: -1,
+			currentQuestionText: '',
 			currentAnswer: []
     }
 		this.renderQuestion = this.renderQuestion.bind(this)
@@ -25,32 +26,29 @@ export class MusicTheory extends React.Component {
 	}
 
 	componentWillMount() {
-		console.log('componentWillMount')
-		this.loadQuestionAndAnswer()
+		this.loadQuestionAndAnswer(this.state.book)
 	}
 
-	loadQuestionAndAnswer() {
-		console.log('loadQuestionAndAnswer before setState book ' + this.state.book)
-		let qn = this.questionPool.pullQuestion(this.state.book)
+	loadQuestionAndAnswer(book) {
+		let questionIdx = this.questionPool.pullQuestion(book)
 		this.setState({
-			currentQuestion: qn,
-			currentAnswer: this.questionPool.pullAnswers(this.state.book)
+			currentQuestion: questionIdx,
+			currentQuestionText: this.questionPool.getQuestionByIdx(book, questionIdx),
+			currentAnswer: this.questionPool.pullAnswers(book)
 		})
-		console.log('loadQuestionAndAnswer after setState book ' + this.state.book)
 	}
 
 	handleAnswer(idx) {
 		if (this.state.answerSelected >= 0) {
 			if (this.state.currentAnswer[idx] == this.state.currentQuestion) {
-				console.log('handleAnswer before setState')
 				this.setState({
 					questionNum: this.state.questionNum + 1,
 					answerSelected: -1,
 					currentQuestion: -1,
+					currentQuestionText: '',
 					currentAnswer: []
 				})
-				console.log('handleAnswer after setState')
-				this.loadQuestionAndAnswer()
+				this.loadQuestionAndAnswer(this.state.book)
 			}
 		} else {
 			let newScore = this.state.score;
@@ -60,29 +58,23 @@ export class MusicTheory extends React.Component {
 			} else {
 				playAudioIncorrect()
 			}
-			console.log('handleAnswer before setState')
 			this.setState({
 				score: newScore,
 				answerSelected: idx
 			})
-			console.log('handleAnswer after setState')
 		}
 	}
 
 	handleBook(book) {
 		this.questionPool.clearUsedQuestionList()
 		this.questionPool.clearSelectedAnswerList()
-  	console.log('handleBook before setState')
 		this.setState({
   		book: book,
 			questionNum: 1,
 			score: 0,
-			answerSelected: -1,
-			currentQuestion: -1,
-			currentAnswer: []
+			answerSelected: -1
 		})
-		this.loadQuestionAndAnswer()
-  	console.log('handleBook after setState')
+		this.loadQuestionAndAnswer(book)
 	}
 
 	renderAnswer(ansIdx, idx) {
@@ -116,7 +108,7 @@ export class MusicTheory extends React.Component {
 				<div className="questionContainer">
 					<div className="floatLeft">
 						<h3>Question {this.state.questionNum}:</h3>
-						<p>What does "{this.questionPool.getQuestionByIdx(this.state.book, this.state.currentQuestion)}" mean?</p>
+						<p>What does "{this.state.currentQuestionText}" mean?</p>
 						<div className="floatLeft">
 							<ul>
 								{this.state.currentAnswer.map(this.renderAnswer)}
@@ -141,16 +133,22 @@ export class MusicTheory extends React.Component {
 				<h3>this.state.questionNum = {this.state.questionNum}</h3>
  				<h3>this.state.currentQuestion = {this.state.currentQuestion}</h3>
 				<h3>this.state.score = {this.state.score}</h3>
+				<h3>this.state.currentAnswer = {this.state.currentAnswer}</h3>
 			</div>
 			)
 	}
 
 	render() {
+				// <div>
+				// 	{this.renderState()}
+				// </div>
 		return (
 			<div>
 				<h2 className="floatLeft">Music Theory</h2>
 				<div className="floatRight">
 					<div className="booksButton">
+						<button type="button" className={this.state.book == 1 ? "BookButton currentBook" : "BookButton"} onClick={() => this.handleBook(1)}>Book 1</button>
+						<button type="button" className={this.state.book == 3 ? "BookButton currentBook" : "BookButton"} onClick={() => this.handleBook(3)}>Book 3</button>
 						<button type="button" className={this.state.book == 5 ? "BookButton currentBook" : "BookButton"} onClick={() => this.handleBook(5)}>Book 5</button>
 					</div>
 				</div>
