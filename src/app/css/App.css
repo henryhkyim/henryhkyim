@@ -23,6 +23,11 @@ h2 {
 	color: #00063A;
 }
 
+h3 {
+  font-size: 120%;
+  color: #00063A;
+}
+
 footer {
   padding-top: 10px;
   font-size: 80%;
@@ -36,3 +41,8 @@ footer {
 .floatClear {
   clear: both;
 }
+
+.showBorder {
+  border: 1px solid black;
+}
+

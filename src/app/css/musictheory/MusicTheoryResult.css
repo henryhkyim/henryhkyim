@@ -1,7 +1,32 @@
-.wrongAnswer {
-	color: red;
+#correctResultContainer {
+  width: 100%;
+  background: #C0C0C0;
+  margin-bottom: 5px;
 }
 
-.correctAnswer {
-	color: blue;
+#correctBar {
+    width: 10%;
+    height: 25px;
+    background: #4CAF50;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 25px; /* To center it vertically */
+    color: white; 
+}
+
+#incorrectResultContainer {
+  width: 100%;
+  background: #C0C0C0;
+}
+
+#incorrectBar {
+    width: 10%;
+    height: 25px;
+    background: red;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 25px; /* To center it vertically */
+    color: white; 
+}
+
+.drawImage {
+	height: 150px;
 }

@@ -7,21 +7,12 @@
   text-align: left;
 }
 
-.resultContainer {
-	clear: both;
-  text-align: left;
-}
-
 .questionContainer ul li {
 	clear: both;
 }
 
 .questionContainer ul {
   list-style-type: none;
-}
-
-.showBorder {
-  border: 1px solid black;
 }
 
 .floatLeft {
@@ -43,7 +34,7 @@
 }
 
 .green {
-	background: green;
+	background: #4CAF50;
 	color: white;
 }
 

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { QuestionPoolUtil } from "../../utils/QuestionPoolUtils"
+import { GiftDrawing } from './GiftDrawing'
 
 import "../../css/musictheory/MusicTheoryResult.css"
 
@@ -8,37 +8,47 @@ export class MusicTheoryResult extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.renderResult = this.renderResult.bind(this)
 	}
 
-	renderResult(qnIdx, idx) {
-		let resultJsx = ""
-		if (qnIdx != this.props.questionPool.getSelectedAnswerList()[idx]) {
-			resultJsx = <p className="wrongAnswer">Your answer: {this.props.questionPool.getAnswerByIdx(this.props.book, this.props.questionPool.getSelectedAnswerList()[idx])}</p>
+  render() {
+  	let correctPct = this.props.correct / this.props.bounsCount * 100
+  	if (correctPct > 100) {
+  		correctPct = 100
+  	}
+  	let incorrectPct = this.props.incorrect / this.props.bounsCount * 100
+  	if (incorrectPct > 100) {
+  		incorrectPct = 100
+  	}
+		const correctBarStyle = {
+		  width: correctPct + "%"
+		}
+		const incorrectBarStyle = {
+		  width: incorrectPct + "%"
+		}
+		let completedJsx = ''
+		if (this.props.correct == this.props.bounsCount) {
+			completedJsx = (<div>
+												<p>Congratulations! You got the bouns now!</p>
+												<GiftDrawing/>
+											</div>)
 		}
 		return (
-			<div key={idx}>
-				<h3>Question {idx + 1}:</h3>
-			  <p>What does "{this.props.questionPool.getQuestionByIdx(this.props.book, qnIdx)}" mean?</p>
-				<p>Answer: {this.props.questionPool.getAnswerByIdx(this.props.book, qnIdx)}</p>
-				{resultJsx}
-			</div>
-			)
-	}
-
-	render() {
-		return (
-				<div className="resultContainer">
-					{this.props.children}
-					<hr/>
-					{this.props.questionPool.getUsedQuestionList().map(this.renderResult)}
+			<div>
+				<div id="correctResultContainer">
+				  <div id="correctBar" style={correctBarStyle}>{this.props.correct}</div>
 				</div>
+				<div id="incorrectResultContainer">
+				  <div id="incorrectBar" style={incorrectBarStyle}>{this.props.incorrect}</div>
+				</div>
+				{completedJsx}
+			</div>
 			)
 	}
 
 }
 
 MusicTheoryResult.propTypes = {
-	questionPool: PropTypes.object,
-	book: PropTypes.number
+	correct: PropTypes.number,
+	incorrect: PropTypes.number,
+	bounsCount: PropTypes.number
 }

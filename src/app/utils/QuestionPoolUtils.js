@@ -412,7 +412,7 @@ export class QuestionPoolUtil {
 		while (this.currentQuestionIdx == null || this.usedQuestionList.indexOf(this.currentQuestionIdx) != -1) {
 			this.currentQuestionIdx = randomNumber(0, questionPool.length)
 		}
-		this.usedQuestionList.push(this.currentQuestionIdx)
+		// this.usedQuestionList.push(this.currentQuestionIdx)
 		this.currentAnswerIdxList.push(this.currentQuestionIdx)
 		return this.currentQuestionIdx
 	}

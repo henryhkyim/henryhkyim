@@ -1,10 +1,13 @@
 import React from 'react'
 import { QuestionPoolUtil } from '../../utils/QuestionPoolUtils'
 import { playAudioCorrect, playAudioIncorrect } from '../../utils/AudioUtil.js'
+import { MusicTheoryResult } from './MusicTheoryResult'
 
 import "../../css/musictheory/MusicTheory.css"
 import "../../images/redcross.png"
 import "../../images/greentick.png"
+
+const BOUNS_COUNT = 50
 
 export class MusicTheory extends React.Component {
 	constructor(props) {
@@ -14,6 +17,7 @@ export class MusicTheory extends React.Component {
   		book: 1,
 			questionNum: 1,
 			score: 0,
+			incorrect: 0,
 			answerSelected: -1,
 			currentQuestion: -1,
 			currentQuestionText: '',
@@ -40,26 +44,31 @@ export class MusicTheory extends React.Component {
 
 	handleAnswer(idx) {
 		if (this.state.answerSelected >= 0) {
-			if (this.state.currentAnswer[idx] == this.state.currentQuestion) {
-				this.setState({
-					questionNum: this.state.questionNum + 1,
-					answerSelected: -1,
-					currentQuestion: -1,
-					currentQuestionText: '',
-					currentAnswer: []
-				})
-				this.loadQuestionAndAnswer(this.state.book)
+			if (this.state.score < BOUNS_COUNT) {
+				if (this.state.currentAnswer[idx] == this.state.currentQuestion) {
+					this.setState({
+						questionNum: this.state.questionNum + 1,
+						answerSelected: -1,
+						currentQuestion: -1,
+						currentQuestionText: '',
+						currentAnswer: []
+					})
+					this.loadQuestionAndAnswer(this.state.book)
+				}
 			}
 		} else {
 			let newScore = this.state.score;
+			let newIncorrect = this.state.incorrect;
 			if (this.state.currentAnswer[idx] == this.state.currentQuestion) {
 				newScore = newScore + 1
 				playAudioCorrect()
 			} else {
+				newIncorrect = newIncorrect + 1
 				playAudioIncorrect()
 			}
 			this.setState({
 				score: newScore,
+				incorrect: newIncorrect,
 				answerSelected: idx
 			})
 		}
@@ -72,6 +81,7 @@ export class MusicTheory extends React.Component {
   		book: book,
 			questionNum: 1,
 			score: 0,
+			incorrect: 0,
 			answerSelected: -1
 		})
 		this.loadQuestionAndAnswer(book)
@@ -102,7 +112,9 @@ export class MusicTheory extends React.Component {
 			} else {
 				resultImageJsx = <img src="./images/redcross.png"></img>
 			}
-			hintJsx = <p>Click the correct answer to move on</p>
+			if (this.state.score < BOUNS_COUNT) {
+				hintJsx = <p>Click the correct answer to move on</p>
+			}
 		}
 		return (
 				<div className="questionContainer">
@@ -118,9 +130,6 @@ export class MusicTheory extends React.Component {
 						<div className="resultImage">
 							{resultImageJsx}
 						</div>
-					</div>
-					<div className="floatRight">
-						<h3>Score: {this.state.score}</h3>
 					</div>
 				</div>
 			)
@@ -151,6 +160,9 @@ export class MusicTheory extends React.Component {
 						<button type="button" className={this.state.book == 3 ? "BookButton currentBook" : "BookButton"} onClick={() => this.handleBook(3)}>Book 3</button>
 						<button type="button" className={this.state.book == 5 ? "BookButton currentBook" : "BookButton"} onClick={() => this.handleBook(5)}>Book 5</button>
 					</div>
+				</div>
+				<div className="floatClear">
+					<MusicTheoryResult bounsCount={BOUNS_COUNT} correct={this.state.score} incorrect={this.state.incorrect}/>
 				</div>
 				<div className="floatClear">
 					{this.renderQuestion()}
