@@ -4,18 +4,18 @@ import { toTwoDecimal } from '../../utils/NumberUtils.js'
 
 import '../../css/stockquote/OneStockQuote.css'
 
+const sampleQuoteData = new Map()
+sampleQuoteData.set("00005.HK", {desc: "HSBC HOLDINGS", price: 74.55, prev_close: 74.6})
+sampleQuoteData.set("00006.HK", {desc: "POWER ASSETS", price: 55.4, prev_close: 55.95})
+sampleQuoteData.set("00700.HK", {desc: "TENCENT", price: 356.4, prev_close: 367.2})
+sampleQuoteData.set("07336.HK", {desc: "FI MR HS", price: 5.73, prev_close: 5.71})
+
 export class OneStockQuote extends React.Component {
 
 	constructor(props) {
 		super(props)
-		const sampleQuoteData = new Map()
-		sampleQuoteData.set("00005.HK", {desc: "HSBC HOLDINGS", price: 74.55, prev_close: 74.6})
-		sampleQuoteData.set("00006.HK", {desc: "POWER ASSETS", price: 55.4, prev_close: 55.95})
-		sampleQuoteData.set("00700.HK", {desc: "TENCENT", price: 356.4, prev_close: 367.2})
-		sampleQuoteData.set("07336.HK", {desc: "FI MR HS", price: 5.73, prev_close: 5.71})
+		this.handleInterval
 		this.state = {
-			symbol: props.stock,
-			desc: sampleQuoteData.get(props.stock).desc,
 			price: sampleQuoteData.get(props.stock).price,
 			priceChange: toTwoDecimal((sampleQuoteData.get(props.stock).price - sampleQuoteData.get(props.stock).prev_close))
 		}
@@ -23,9 +23,13 @@ export class OneStockQuote extends React.Component {
 	}
 
 	componentDidMount() {
-		setInterval(this.refreshPrice.bind(this), Math.max(10000 * Math.random(), 3000))
+		this.handleInterval = setInterval(this.refreshPrice.bind(this), Math.max(10000 * Math.random(), 3000))
 	}
-	
+
+	componentWillUnmount() {
+		clearInterval(this.handleInterval)
+	}	
+
 	refreshPrice() {
 		var currentPriceChange = toTwoDecimal(Math.random())
 		if (this.priceChangeCount % 2 == 1) {
@@ -39,7 +43,6 @@ export class OneStockQuote extends React.Component {
 	}
 
 	render() {
-	
 		let priceJsx = ''
 		if (this.state.priceChange > 0) {
 		  priceJsx = (<div className="quoteBoxPrice">
@@ -59,8 +62,8 @@ export class OneStockQuote extends React.Component {
 		}
 		return (
 			<div className="quoteBox">
-				<h3>{this.state.symbol}</h3>
-				<p>{this.state.desc}</p>
+				<h3>{this.props.stock}</h3>
+				<p>{sampleQuoteData.get(this.props.stock).desc}</p>
 				{priceJsx}
 			</div>
 		)
