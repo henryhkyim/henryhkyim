@@ -5,7 +5,7 @@
 }
 
 #correctBar {
-    width: 10%;
+    width: 0%;
     height: 25px;
     background: #4CAF50;
     text-align: center; /* To center it horizontally (if you want) */
@@ -19,14 +19,10 @@
 }
 
 #incorrectBar {
-    width: 10%;
+    width: 0%;
     height: 25px;
     background: red;
     text-align: center; /* To center it horizontally (if you want) */
     line-height: 25px; /* To center it vertically */
     color: white; 
-}
-
-.drawImage {
-	height: 150px;
 }

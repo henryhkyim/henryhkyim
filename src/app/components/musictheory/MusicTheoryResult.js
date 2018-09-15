@@ -28,17 +28,17 @@ export class MusicTheoryResult extends React.Component {
 		let completedJsx = ''
 		if (this.props.correct == this.props.bounsCount) {
 			completedJsx = (<div>
-												<p>Congratulations! You got the bouns now!</p>
+												<p>Congratulations! You get your bonus now!</p>
 												<GiftDrawing/>
 											</div>)
 		}
 		return (
 			<div>
 				<div id="correctResultContainer">
-				  <div id="correctBar" style={correctBarStyle}>{this.props.correct}</div>
+				  <div id="correctBar" style={correctBarStyle}>{this.props.correct}/{this.props.bounsCount}</div>
 				</div>
 				<div id="incorrectResultContainer">
-				  <div id="incorrectBar" style={incorrectBarStyle}>{this.props.incorrect}</div>
+				  <div id="incorrectBar" style={incorrectBarStyle}>{this.props.incorrect}/{this.props.bounsCount}</div>
 				</div>
 				{completedJsx}
 			</div>

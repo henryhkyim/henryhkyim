@@ -1,3 +1,8 @@
+.contentContainer {
+	text-align: left;
+  overflow: visible;
+}
+
 .redbold {
 	color: red;
 	font-weight: bold;

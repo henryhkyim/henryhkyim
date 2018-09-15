@@ -1,19 +1,23 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import "../../css/musictheory/GiftDrawing.css"
+
 import "../../images/apple.jpg"
 import "../../images/egg_waffle.jpg"
 import "../../images/fish_ball.jpg"
 import "../../images/water.jpg"
 import "../../images/siu_mai.jpg"
 import "../../images/ice_cream.jpg"
+import "../../images/violin.jpg"
+import "../../images/string_cheese.jpg"
 
 export class GiftDrawing extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.imagesName = ["Apple", "Egg waffle", "Fish ball", "Water", "Siu Mai", "Ice-cream"]
-		this.images = ["apple.jpg", "egg_waffle.jpg", "fish_ball.jpg", "water.jpg", "siu_mai.jpg", "ice_cream.jpg"]
+		this.imagesName = ["Apple", "Egg waffle", "Fish ball", "Water", "Siu Mai", "Ice-cream", "Violin practice", "String Cheese"]
+		this.images = ["apple.jpg", "egg_waffle.jpg", "fish_ball.jpg", "water.jpg", "siu_mai.jpg", "ice_cream.jpg", "violin.jpg", "string_cheese.jpg"]
 		this.intervalHandle = null
 		this.state = {
 			draw: 0,

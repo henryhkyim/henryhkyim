@@ -148,9 +148,6 @@ export class MusicTheory extends React.Component {
 	}
 
 	render() {
-				// <div>
-				// 	{this.renderState()}
-				// </div>
 		return (
 			<div>
 				<h2 className="floatLeft">Music Theory</h2>
