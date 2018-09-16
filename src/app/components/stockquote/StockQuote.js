@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { OneStockQuote } from './OneStockQuote.js'
+import { isStockAvailable } from '../../utils/StockQuoteUtils.js'
 
 import '../../css/stockquote/StockQuote.css'
 
@@ -14,23 +15,29 @@ export class StockQuote extends React.Component {
 		this.handleDelete = this.handleDelete.bind(this)
 		this.state = {
 			stockList: [...this.props.stockList],
-			stockCode: ""
+			stockCode: "",
+			message: ""
 		}
 	}
 
 	handleDelete(filterCode) {
 		let finalList = this.state.stockList.filter((stockCode) => stockCode != filterCode)
-		console.log(`after list = ${finalList}`)
 		this.setState({
 			stockList: finalList
 		});
 	}
 
 	handleAdd() {
-		console.log(`this.state.stockCode = ${this.state.stockCode}`)
-		this.setState({
-			stockList: [...this.state.stockList, this.state.stockCode]
-		});
+		if (isStockAvailable(this.state.stockCode)) {
+			this.setState({
+				stockList: [...this.state.stockList, this.state.stockCode],
+				message: ""
+			});
+		} else {
+			this.setState({
+				message: " " + this.state.stockCode + " does not exist!"
+			});
+		}
 	}
 
 	handleChange(event) {
@@ -40,7 +47,6 @@ export class StockQuote extends React.Component {
 	}
 
 	renderQuote(symbol, index) {
-		console.log(`renderQuote: ${symbol}, ${index}`)
 		return <OneStockQuote key={index} stock={symbol}/>
 	}
 
@@ -59,6 +65,7 @@ export class StockQuote extends React.Component {
         </label>
         <button type="button" onClick={() => this.handleAdd()}>Add</button>
         <button type="button" onClick={() => this.handleDelete(this.state.stockCode)}>Delete</button>
+        <p className="inlineMessage">{this.state.message}</p>
       	<hr/>
 				<span className="floatClear alignCenter">
 					{this.state.stockList.map(this.renderQuote)}

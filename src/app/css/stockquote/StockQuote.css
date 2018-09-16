@@ -7,3 +7,9 @@
 	color: red;
 	font-weight: bold;
 }
+
+.inlineMessage {
+	display: inline;
+	color: red;
+	font-weight: bold;
+}
