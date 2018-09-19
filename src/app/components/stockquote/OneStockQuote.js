@@ -3,19 +3,21 @@ import PropTypes from 'prop-types'
 import { toTwoDecimal } from '../../utils/NumberUtils.js'
 import { getStockPrice, getStockDesc, getPrevClosePrice } from '../../utils/StockQuoteUtils.js'
 
+import "../../images/cross_icon.jpg"
+
 import '../../css/stockquote/OneStockQuote.css'
 
 export class OneStockQuote extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.handleInterval
 		const currentPrice = toTwoDecimal(getStockPrice(props.stock))
 		const prevClosePrice = toTwoDecimal(getPrevClosePrice(props.stock))
 		this.state = {
 			price: currentPrice,
 			priceChange: toTwoDecimal(currentPrice - prevClosePrice)
 		}
+		this.handleInterval = null
 		this.refreshPrice = this.refreshPrice.bind(this)
 	}
 
@@ -51,6 +53,7 @@ export class OneStockQuote extends React.Component {
 									</div>)
 		return (
 			<div className="quoteBox">
+				<img className="crossIcon" src="./images/cross_icon.jpg" onClick={() => this.props.handleDelete(this.props.stock)} />
 				<h3>{this.props.stock}</h3>
 				<p>{getStockDesc(this.props.stock)}</p>
 				{priceJsx}
@@ -60,5 +63,6 @@ export class OneStockQuote extends React.Component {
 }
 
 OneStockQuote.propTypes = {
-	stock: PropTypes.string
+	stock: PropTypes.string,
+	handleDelete: PropTypes.func
 }

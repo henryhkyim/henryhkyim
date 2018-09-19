@@ -10,14 +10,15 @@ export class StockQuote extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.handleChange = this.handleChange.bind(this)
-		this.handleAdd = this.handleAdd.bind(this)
-		this.handleDelete = this.handleDelete.bind(this)
 		this.state = {
 			stockList: [...this.props.stockList],
 			stockCode: "",
 			message: ""
 		}
+		this.handleChange = this.handleChange.bind(this)
+		this.handleAdd = this.handleAdd.bind(this)
+		this.handleDelete = this.handleDelete.bind(this)
+		this.renderQuote = this.renderQuote.bind(this)
 	}
 
 	handleDelete(filterCode) {
@@ -47,7 +48,7 @@ export class StockQuote extends React.Component {
 	}
 
 	renderQuote(symbol, index) {
-		return <OneStockQuote key={index} stock={symbol}/>
+		return <OneStockQuote key={index} stock={symbol} handleDelete={this.handleDelete} />
 	}
 
 	render() {
@@ -64,7 +65,6 @@ export class StockQuote extends React.Component {
           <input type="text" value={this.state.stockCode} onChange={this.handleChange} />
         </label>
         <button type="button" onClick={() => this.handleAdd()}>Add</button>
-        <button type="button" onClick={() => this.handleDelete(this.state.stockCode)}>Delete</button>
         <p className="inlineMessage">{this.state.message}</p>
       	<hr/>
 				<span className="floatClear alignCenter">
