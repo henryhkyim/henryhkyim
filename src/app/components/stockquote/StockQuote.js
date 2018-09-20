@@ -29,15 +29,27 @@ export class StockQuote extends React.Component {
 	}
 
 	handleAdd() {
-		if (isStockAvailable(this.state.stockCode)) {
+		if (this.state.stockCode == '') {
 			this.setState({
-				stockList: [...this.state.stockList, this.state.stockCode],
-				message: ""
-			});
+				message: " " + "Please input stock code to be added!"
+			})
 		} else {
-			this.setState({
-				message: " " + this.state.stockCode + " does not exist!"
-			});
+			if (isStockAvailable(this.state.stockCode)) {
+				if (this.state.stockList.includes(this.state.stockCode)) {
+					this.setState({
+						message: " " + this.state.stockCode + " is already added!"
+					})
+				} else {
+					this.setState({
+						stockList: [...this.state.stockList, this.state.stockCode],
+						message: ""
+					})
+				}
+			} else {
+				this.setState({
+					message: " " + this.state.stockCode + " does not exist!"
+				})
+			}
 		}
 	}
 

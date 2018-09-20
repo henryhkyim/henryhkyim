@@ -18,7 +18,9 @@ export class App extends React.Component {
 	}
 
 	render() {
-		let stockList = ["00005.HK", "00006.HK", "00700.HK", "07336.HK", "00005.HK", "00006.HK"]
+		let stockList = ["00002.HK", "00005.HK", "00006.HK", "00011.HK", "00066.HK", "00388.HK", "00700.HK", "00823.HK", 
+		                 "07336.HK", "02318.HK", "02800.HK", "07336.HK"]
+		let portfolioStockList = ["00005.HK", "00006.HK", "02800.HK"]
 		// let stockList = ["00005.HK"]
 		return (
 				<BrowserRouter>
