@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { toTwoDecimal } from '../../utils/NumberUtils.js'
 import { getStockPrice, getStockDesc, getPrevClosePrice } from '../../utils/StockQuoteUtils.js'
 
-import "../../images/cross_icon.jpg"
+import "../../images/cross_icon.png"
 
 import '../../css/stockquote/OneStockQuote.css'
 
@@ -76,7 +76,7 @@ export class OneStockQuote extends React.Component {
 			<div className="quoteBox">
 				<div className="loader" style={loadingStyle}></div>
 				<div className="quoteBoxContent" style={quoteBoxContentStyle}>
-					<img className="crossIcon" src="./images/cross_icon.jpg" onClick={() => this.props.handleDelete(this.props.stock)} />
+					<img className="crossIcon" src="./images/cross_icon.png" onClick={() => this.props.handleDelete(this.props.stock)} />
 					<h3>{this.props.stock}</h3>
 					<p>{getStockDesc(this.props.stock)}</p>
 					{priceJsx}
